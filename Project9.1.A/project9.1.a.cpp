@@ -17,7 +17,7 @@ struct Student
 };
 void Create(Student* p, const int N);
 void Print(Student* p, const int N);
-int LineSearch_count(Student* p, const int N);
+void LineSearch_count(Student* p, const int N);
 double LineSearch_proc(Student* p, const int N);
 int main()
 {
@@ -49,7 +49,8 @@ int main()
 			Print(p, N);
 			break;
 		case 3:
-			cout << "Кількість оцінок з програмуваннячий «5», «4», «3»:" << LineSearch_count(p, N) << endl;
+			cout << "Кількість оцінок з програмуваннячий «5», «4», «3»:" << endl;
+			LineSearch_count(p, N);
 			break;
 		case 4:
 			proc = LineSearch_proc(p, N);
@@ -106,19 +107,34 @@ void Print(Student* p, const int N)
 		<< endl;
 	cout << endl;
 }
-int LineSearch_count(Student* p, const int N)
+void LineSearch_count(Student* p, const int N)
 {
-	int count = 0;
+	int count1 = 0;
+	int count2 = 0;
+	int count3 = 0;
 	for (int i = 0; i < N; i++)
 	{
 		{
-			if (p[i].grades_in_informatic >= 3 && p[i].grades_in_informatic <= 5)
+			if (p[i].grades_in_informatic == 3)
 			{
-				count++;
+				count1++;
+				cout << "Кількість 3" << setw(3) << right << count1
+					<< " " << endl;
+			}
+			if (p[i].grades_in_informatic == 4)
+			{
+				count2++;
+				cout << "Кількість 4" << setw(3) << right << count2
+					<< " " << endl;
+			}
+			if (p[i].grades_in_informatic == 5)
+			{
+				count3++;
+				cout << "Кількість 5" << setw(3) << right << count3
+					<< " " << endl;
 			}
 		}
 	}
-	return  count;
 }
 double LineSearch_proc(Student* p, const int N)
 {
