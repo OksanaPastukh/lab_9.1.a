@@ -17,7 +17,7 @@ struct Student
 };
 void Create(Student* p, const int N);
 void Print(Student* p, const int N);
-void LineSearch_count(Student* p, const int N);
+void LineSearch_count(Student* p, const int N,int* count_3, int* count_4, int* count_5);
 double LineSearch_proc(Student* p, const int N);
 int main()
 {
@@ -49,8 +49,13 @@ int main()
 			Print(p, N);
 			break;
 		case 3:
-			cout << "Кількість оцінок з програмуваннячий «5», «4», «3»:" << endl;
-			LineSearch_count(p, N);
+			int count_3;
+			int count_4;
+			int count_5;
+			LineSearch_count(p, N, &count_3,&count_4,&count_5);
+			cout << "Кількість оцінок з програмуваннячий «3»:" << &count_3 << endl;
+			cout << "Кількість оцінок з програмуваннячий «4»:" << &count_4 << endl;
+			cout << "Кількість оцінок з програмуваннячий «5»:" << &count_5 << endl;
 			break;
 		case 4:
 			proc = LineSearch_proc(p, N);
@@ -107,34 +112,33 @@ void Print(Student* p, const int N)
 		<< endl;
 	cout << endl;
 }
-void LineSearch_count(Student* p, const int N)
+void LineSearch_count(Student* p, const int N, int* count_3, int* count_4, int* count_5)
 {
-	int count1 = 0;
-	int count2 = 0;
-	int count3 = 0;
+	/*int* count_3 = 0;
+	int* count_4= 0;
+	int* count_5= 0;*/
 	for (int i = 0; i < N; i++)
 	{
-		{
 			if (p[i].grades_in_informatic == 3)
 			{
-				count1++;
-				cout << "Кількість 3" << setw(3) << right << count1
-					<< " " << endl;
+				(*count_3)++;
 			}
-			if (p[i].grades_in_informatic == 4)
+			else if (p[i].grades_in_informatic == 4)
 			{
-				count2++;
-				cout << "Кількість 4" << setw(3) << right << count2
-					<< " " << endl;
+				(*count_4)++;
 			}
-			if (p[i].grades_in_informatic == 5)
+			else if (p[i].grades_in_informatic == 5)
 			{
-				count3++;
-				cout << "Кількість 5" << setw(3) << right << count3
-					<< " " << endl;
+				(*count_5)++;
 			}
-		}
+		
 	}
+	/*cout << "Кількість 3" << setw(3) << right << count_3
+		<< " " << endl;
+	cout << "Кількість 4" << setw(3) << right << count_4
+		<< " " << endl;
+	cout << "Кількість 5" << setw(3) << right << count_5
+		<< " " << endl;*/
 }
 double LineSearch_proc(Student* p, const int N)
 {
